@@ -1,0 +1,195 @@
+/* General Styles */
+:root {
+    --primary: #0f172a;
+    --secondary: #3b82f6;
+    --accent: #f59e0b;
+    --text-dark: #334155;
+    --bg-light: #f1f5f9;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: var(--text-dark);
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+    margin: 0;
+}
+
+/* Navigation Bar */
+.navbar {
+    background: rgba(15, 23, 42, 0.95);
+    backdrop-filter: blur(10px);
+    color: white;
+    padding: 1rem 5%;
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo { font-size: 1.5rem; font-weight: 800; }
+.logo span { color: var(--secondary); }
+
+.nav-links { display: flex; list-style: none; gap: 20px; }
+.nav-links a { color: white; text-decoration: none; transition: 0.3s; font-weight: 500; }
+.nav-links a:hover { color: var(--secondary); }
+
+/* Hero Section */
+.hero {
+    height: 80vh;
+    background: linear-gradient(rgba(15, 23, 42, 0.7), rgba(15, 23, 42, 0.7)), 
+                url('https://images.unsplash.com/photo-1537462715879-360eeb61a0ad?auto=format&fit=crop&w=1920&q=80');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+}
+
+.hero h1 { font-size: 3.5rem; font-weight: 900; margin-bottom: 10px; }
+.hero p { font-size: 1.2rem; opacity: 0.9; }
+
+/* Section Layouts */
+.section { padding: 80px 10%; }
+.bg-light { background-color: var(--bg-light); }
+.bg-dark { background-color: var(--primary); color: white; }
+
+.section-title { text-align: center; font-size: 2.5rem; margin-bottom: 50px; font-weight: 700; position: relative; }
+.section-title::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 4px;
+    background: var(--secondary);
+    margin: 15px auto 0;
+    border-radius: 2px;
+}
+
+/* About Section */
+.about-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 25px;
+    text-align: center;
+}
+
+.about-card {
+    background: white;
+    padding: 30px 20px;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+    transition: 0.3s ease;
+}
+
+.about-card:hover { transform: translateY(-10px); }
+
+.about-card i {
+    font-size: 2.5rem;
+    color: var(--secondary);
+    margin-bottom: 20px;
+}
+
+.about-card h4 { font-size: 1.2rem; font-weight: 700; margin-bottom: 10px; }
+.about-card p, .about-card a { color: #64748b; text-decoration: none; word-break: break-all; }
+.about-card a:hover { color: var(--secondary); text-decoration: underline; }
+
+/* Grid Systems */
+.team-grid { display: grid; gap: 30px; margin-bottom: 60px; max-width: 1200px; margin-inline: auto; }
+.core-team { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
+.student-team { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
+
+.member-card {
+    background: white;
+    padding: 25px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    transition: 0.3s;
+    color: var(--text-dark);
+}
+
+.member-card:hover { transform: translateY(-10px); border-bottom: 4px solid var(--secondary); }
+.member-card img {
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    margin: 0 auto 15px;
+    object-fit: cover;
+    border: 4px solid var(--bg-light);
+    outline: 2px solid var(--secondary);
+}
+
+.role { color: var(--secondary); font-weight: 700; text-transform: uppercase; font-size: 0.85rem; letter-spacing: 1px; }
+.info { font-size: 0.9rem; margin-top: 10px; color: #64748b; line-height: 1.4; }
+
+/* Sliding Gallery */
+.gallery-container { overflow: hidden; width: 100%; padding: 20px 0; }
+.gallery-track { display: flex; width: max-content; animation: scroll 40s linear infinite; }
+.gallery-track:hover { animation-play-state: paused; }
+.gallery-item { position: relative; min-width: 320px; height: 240px; margin: 0 15px; border-radius: 12px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.2); }
+.gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
+.gallery-item:hover img { transform: scale(1.1); }
+
+.caption-overlay {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    background: rgba(15, 23, 42, 0.9);
+    color: white;
+    padding: 15px;
+    transform: translateY(100%);
+    transition: 0.3s ease-in-out;
+}
+
+.gallery-item:hover .caption-overlay { transform: translateY(0); }
+
+@keyframes scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+/* Events */
+.events-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; }
+.event-box { background: white; padding: 30px; border-radius: 10px; border-top: 5px solid var(--secondary); box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+.event-box ul { list-style: none; padding: 0; }
+.event-box li { padding: 12px 0; border-bottom: 1px dashed #e2e8f0; color: var(--text-dark); }
+
+/* Form */
+.suggestion-form { max-width: 600px; margin: 0 auto; }
+.suggestion-form input, .suggestion-form textarea {
+    width: 100%; padding: 14px; margin-bottom: 15px; border-radius: 8px; border: 1px solid #e2e8f0; font-size: 1rem;
+}
+.suggestion-form button {
+    background: var(--secondary); color: white; padding: 14px 40px; border-radius: 8px; font-weight: bold; cursor: pointer; border: none; transition: 0.3s;
+}
+.suggestion-form button:hover { background: #2563eb; transform: scale(1.05); }
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .hero h1 { font-size: 2.2rem; }
+    .nav-links { display: none; } /* Consider adding a mobile menu icon later */
+}
+/* Logo Image Styling */
+.nav-logo-img {
+    height: 50px;    /* Adjust this height to fit your navbar */
+    width: auto;     /* Keeps the aspect ratio perfect */
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.nav-logo-img:hover {
+    transform: scale(1.05); /* Subtle zoom effect on hover */
+}
+
+/* Ensure the logo container doesn't stretch the nav too much */
+.logo {
+    display: flex;
+    align-items: center;
+    padding: 5px 0;
+}
